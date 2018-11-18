@@ -2,6 +2,20 @@
 using namespace std;
 #define N 100
 int visited[N];
+void dfs(vector<int> graph[], int node) {
+  if(visited[node] == 1)
+    return;
+  // Else
+  visited[node]=1;
+  cout<<node<<" ";
+  for(int i=0;i<graph[node].size();i++) {
+    dfs(graph, graph[node][i]);
+  }
+}
+void initialize() {
+  for(int i=1;i<=5;i++)
+    visited[i]=0;
+}
 void dfs_iterative(vector<int> graph[], int node){
   stack<int> stack_dfs;
   stack_dfs.push(node);
@@ -18,19 +32,5 @@ void dfs_iterative(vector<int> graph[], int node){
       }
     }
   } 
-}
-void dfs(vector<int> graph[], int node) {
-  if(visited[node] == 1)
-    return;
-  // Else
-  visited[node]=1;
-  cout<<node<<" ";
-  for(int i=0;i<graph[node].size();i++) {
-    dfs(graph, graph[node][i]);
-  }
-}
-void initialize() {
-  for(int i=1;i<=5;i++)
-    visited[i]=0;
 }
 
